@@ -103,7 +103,7 @@ def predict():
     db.session.commit()
     if pred==0:
         new_pred='non diabetes'
-        return render_template('dashboard.html',prediction_text=f'The model predicts {pred} which means not diabetis',pred_value=pred)
+        return render_template('dashboard.html',prediction_text=f'You do not have diabetes.',pred_value=pred)
     if pred==1:
         new_pred='diabetes'
         return render_template('dashboard.html',prediction_text=f'You are diabetes positive!! Visit a nearby hospital for necessary healthcare.',pred_value=pred)
