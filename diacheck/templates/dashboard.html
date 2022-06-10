@@ -28,6 +28,12 @@
 }.bg-info {
   background-color: #3abff9 !important;
 }
+.btn {
+    display: inline-block;
+    padding: 0.4rem 2.9rem;
+    color: #f8f9fa !important;
+    background-color: #3abff9;
+}
 </style>
 <div class="nav-section">
   <a class="navbar-brand mr-4" href="/"  style="display: flex;justify-content: flex-start;">
@@ -106,11 +112,18 @@
     </div>
   
     <b><label class="label text-center">Predict</label></b>
-    <div style="box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;width:350px;background-color: white;margin: auto;height:300px;border-radius: 20px;">
+    <div style="box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;width:350px;background-color: white;margin: auto;height:300px;border-radius: 20p;display:flex;justify-content:center;align-item:center">
+    <div>{% if prediction_text %}
+    <p>Prediction : {{prediction_text}}</p>
+    <a class="btn btn-block" href="/blogs">Click here  </a>
+    {%else %}
       <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+      
         Make Prediction
       </button>
+      {%endif %}
     </div>
+      </div>
     
     </div>
     <!-- Button trigger modal -->
@@ -123,7 +136,7 @@
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+        <h5 class="modal-title" id="exampleModalLabel"> Prediction</h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
@@ -169,9 +182,9 @@
                 <label for="" class="form-label">Heavy disease or attack:</label>
                 <input type="text" name="hdoa" class="form-control">
             </div>  
-              <input type="submit" >
+              <input type="submit" class="btn btn-bloc">
               
-              <p>Prediction : {{prediction_text}}</p>
+              
            
         
         
