@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>DIACHECK Healthcare</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}" />
+  </head>
+  <body>
+    <main>
+      <div class="big-wrapper light">
+        <img src="{{ url_for('static', filename='img/shape.png') }}" alt="" class="shape" />
+
+        <header>
+          <div class="container">
+            <div class="logo"><a href="/">
+              <img src="{{ url_for('static', filename='img/logo.png') }}" alt="Logo" />
+              <h3 style="display:inline;">DIACHECK</h3></a>
+            </div>
+
+            <div class="links">
+              <ul>
+                <li><a href="/about">About Us</a></li>
+                <li><a href="/login" class="btn">Sign up</a></li>
+                <div class="bottom-area">
+                  <div class="container">
+                    <button class="toggle-btn">
+                      <i class="far fa-moon"></i>
+                      <i class="far fa-sun"></i>
+                    </button>
+                  </div>
+                </div>
+                <script src="https://kit.fontawesome.com/a81368914c.js"></script>
+                <script src="{{ url_for('static', filename='js/app.js') }}"></script>
+              </ul>
+            </div>
+
+            <div class="overlay"></div>
+
+            <div class="hamburger-menu">
+              <div class="bar"></div>
+            </div>
+          </div>
+        </header>
+
+
+          <div class="container">
+            <div class="left">
+              <div class="big-title">
+                <h1>About Us</h1>
+              </div>
+              <p class="text">
+                This is a webapp for predicting diabetes mellitus using an ensemble method technique.
+                It provides an alternative to visiting the hospital to check your diabetes status.
+                <b>Created by Ikegwuonu Samuel 18CG024747.</b>
+              </p>
+              
+            </div>
+
+        
+  </body>
+</html>

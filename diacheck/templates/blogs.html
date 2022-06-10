@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html>
+<head>  
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta property='og:title' content='Title of the article'/>
+    <link rel="icon" href="{{ url_for('static', filename='img/logo.png') }}" />
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap.min.css') }}" >
+    <link rel="preload" href="{{ url_for('static', filename='fonts/OpenSans-Regular.ttf') }}" as='font' crossorigin='anonymous'>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='fonts/icomoon/style.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='dashboard.css') }}">
+    <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+	
+	<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <title>DIACHECK Healthcare</title>
+</head>
+<body>
+    <div class="row" style="margin: 0;"> 
+        
+<style>
+  .calendar-section{
+  display: none;
+}.bg-info {
+  background-color: #3abff9 !important;
+}
+</style>
+<div class="nav-section">
+  <a class="navbar-brand mr-4" href="/"  style="display: flex;justify-content: flex-start;">
+    <div class="logo" style="justify-content: center;
+    margin-bottom: 20px;
+    margin-top: 20px;"><a href="/">
+      <img src="{{ url_for('static', filename='img/logo.png') }}" alt="Logo" />
+      <h3 style="display:inline;">DIACHECK</h3></a>
+    </div>
+  </a>
+  <br><br>
+  <ul>
+      <li><a href="/dashboard"><i class="icon-dashboard"></i>Dashboard</a></li>
+      <li><a href="/results"><i class="icon-book"></i>Records</a></li>
+      <li class="active"><a href="/blogs"><i class="icon-bell"></i>Blogs</a></li>
+      <li><a href="/logout"><i class="icon-power-off"></i>Logout</a></li>
+  </ul>
+</div>
+<section class="main-section" style="width:calc(100% - 290px)">
+  {% with messages = get_flashed_messages(with_categories=true) %}
+          {% if messages %}
+            {% for category, message in messages %}
+              <div class="alert alert-{{ category }}">
+                {{ message }}
+              </div>
+            {% endfor %}
+          {% endif %}
+        {% endwith %}
+        
+        <div class="card" style="margin-top: 10px;">
+          <div class="card-body" style="display: flex;justify-content: space-between;align-items:center"><b style="color:#011353;"> <i class="icon-dashboard" ></i> Blog</b> 
+            <i class="icon-menu"></i>
+            <i class="icon-close"></i>
+          </div>
+          
+        </div>
+  <br>
+  <header>
+    <!-- Intro settings -->
+    <style>
+    .btn {
+        display: inline-block;
+        padding: 0.4rem 2.9rem;
+        color: #f8f9fa !important;
+        background-color: #3abff9;
+      }.btn:hover{
+        color: #3abff9 !important;
+      }
+    </style>
+
+    <!-- Jumbotron -->
+    <div id="intro" class="p-5 text-center bg-light">
+      <h1 class="mb-3 h2">Diabetes - Blog</h1>
+      <p class="mb-3">Diabetes is an autoimmune disorder typically diagnosed in children, teens and young adults, but it can develop at any age. Learn about the signs and symptoms of this condition and get expert guidance on blood sugar monitoring, medication, meal planning and more.</p>
+      <a class="btn btn-primary m-2" href="#" role="button" rel="nofollow"
+        target="_blank">Get Started</a>
+    </div>
+    <!-- Jumbotron -->
+  </header>
+  <!--Main Navigation-->
+
+  <!--Main layout-->
+  <main class="my-5">
+    <div class="container">
+      <!--Section: Content-->
+      <section class="text-center">
+        <h4 class="mb-5"><strong>Latest blog and tips to staying healthy</strong></h4>
+
+        <div class="row">
+          <div class="col-lg-4 col-md-12 mb-4">
+            <div class="card">
+              <div class="bg-image hover-overlay ripple" data-mdb-ripple-color="light">
+                <img src="{{ url_for('static', filename='img/dsm-childhood-body-size-type-1-diabetes-shutterstock-459100483-1000x563.jpg') }}" class="img-fluid" />
+                <a href="#!">
+                  <div class="mask" style="background-color: rgba(251, 251, 251, 0.15);"></div>
+                </a>
+              </div>
+              <div class="card-body">
+                <h5 class="card-title">Childhood Body Size Linked to Lifetime Risk for Type 1 Diabetes</h5>
+                <p class="card-text">
+                  People with a larger body size during childhood are more likely to develop type 1 diabetes even after adjusting for other factors, according to a new study…
+                </p>
+                <a href="/read" class="btn btn-primary">Read</a>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-4 col-md-12 mb-4">
+            <div class="card">
+              <div class="bg-image hover-overlay ripple" data-mdb-ripple-color="light">
+                <img src="{{ url_for('static', filename='img/dsm-dka-black-children-shutterstock-133030739-1000x563.jpg') }}" class="img-fluid" />
+                <a href="#!">
+                  <div class="mask" style="background-color: rgba(251, 251, 251, 0.15);"></div>
+                </a>
+              </div>
+              <div class="card-body">
+                <h5 class="card-title">Hospital Readmission for DKA Higher for Black Children, Poorer Neighborhoods</h5>
+                <p class="card-text">
+                  A new study highlights racial and economic disparities in cases of diabetic ketoacidosis (DKA), a life-threatening emergency…
+                </p>
+                <a href="/read" class="btn btn-primary">Read</a>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-4 col-md-12 mb-4">
+            <div class="card">
+              <div class="bg-image hover-overlay ripple" data-mdb-ripple-color="light">
+                <img src="{{ url_for('static', filename='img/dsm-type-1-diabetes-death-rates-declining-shutterstock-1174702528-1000x562.jpg') }}" class="img-fluid" />
+                <a href="#!">
+                  <div class="mask" style="background-color: rgba(251, 251, 251, 0.15);"></div>
+                </a>
+              </div>
+              <div class="card-body">
+                <h5 class="card-title">Type 1 Diabetes Death Rates Are Declining</h5>
+                <p class="card-text">
+                  According to a recent report, although more people might be getting type 1 diabetes, fewer are dying from it…
+                </p>
+                <a href="/read" class="btn btn-primary">Read</a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-lg-4 col-md-12 mb-4">
+            <div class="card">
+              <div class="bg-image hover-overlay ripple" data-mdb-ripple-color="light">
+                <img src="{{ url_for('static', filename='img/dsm-childhood-body-size-type-1-diabetes-shutterstock-459100483-1000x563.jpg') }}" class="img-fluid" />
+                <a href="#!">
+                  <div class="mask" style="background-color: rgba(251, 251, 251, 0.15);"></div>
+                </a>
+              </div>
+              <div class="card-body">
+                <h5 class="card-title">Childhood Body Size Linked to Lifetime Risk for Type 1 Diabetes</h5>
+                <p class="card-text">
+                  People with a larger body size during childhood are more likely to develop type 1 diabetes even after adjusting for other factors, according to a new study…
+                </p>
+                <a href="/read" class="btn btn-primary">Read</a>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-4 col-md-12 mb-4">
+            <div class="card">
+              <div class="bg-image hover-overlay ripple" data-mdb-ripple-color="light">
+                <img src="{{ url_for('static', filename='img/lila-moss-british-vogue-cover.png') }}" class="img-fluid" />
+                <a href="#!">
+                  <div class="mask" style="background-color: rgba(251, 251, 251, 0.15);"></div>
+                </a>
+              </div>
+              <div class="card-body">
+                <h5 class="card-title">Lila Moss Talks Diabetes With British Vogue</h5>
+                <p class="card-text">
+                  The supermodel shared a few of the methods she utilizes to manage her blood sugar levels in a video interview with the fashion magazine…
+                </p>
+                <a href="/read" class="btn btn-primary">Read</a>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-4 col-md-12 mb-4">
+            <div class="card">
+              <div class="bg-image hover-overlay ripple" data-mdb-ripple-color="light">
+                <img src="{{ url_for('static', filename='img/dsm-physical-activity-neuropathy-shutterstock-712650787-1000x563.jpeg') }}" class="img-fluid" />
+                <a href="#!">
+                  <div class="mask" style="background-color: rgba(251, 251, 251, 0.15);"></div>
+                </a>
+              </div>
+              <div class="card-body">
+                <h5 class="card-title">Physical Activity May Reduce Neuropathy Risk in Type 1</h5>
+                <p class="card-text">
+                  In people with longstanding type 1 diabetes, greater physical activity was linked to a lower risk for peripheral neuropathy and better nerve function…
+                </p>
+                <a href="/read" class="btn btn-primary">Read</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!--Section: Content-->
+    </div>
+  </main>
+  <!--Main layout-->
+
+
+</section>
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="{{ url_for('static', filename='js/jquery.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/popper.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/bootstrap.min.js') }}" ></script>
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+    <script type="text/javascript">
+      $(document).ready(function(){
+
+      });
+      $('.hover').popover({ 
+                html:true,  
+                placement:'auto'  
+    });
+    $('[data-toggle="tooltip"]').tooltip();
+    $('.icon-menu').on('click', function(){
+        $('.icon-close').show();
+        $('.icon-menu').hide();
+        $(".nav-section").css("left", "0");
+    });
+    $('.icon-close').on('click', function(){
+        $('.icon-close').hide();
+        $('.icon-menu').show();
+        $(".nav-section").css("left", "-300px");
+    });
+
+    </script>
+    
+</body>
+</html>
+
+    

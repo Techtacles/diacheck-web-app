@@ -1,0 +1,58 @@
+{% extends "layout.html" %}
+{% block content %}
+    <div class="content-section">
+      <div class="logo" style="justify-content: center;
+      margin-bottom: 20px;
+      margin-top: 20px;"><a href="/">
+        <img src="{{ url_for('static', filename='img/logo.png') }}" alt="Logo" />
+        <h3 style="display:inline;">DIACHECK</h3></a>
+      </div>
+        <span class="form-title">Login Form</span>
+        {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+              {% for category, message in messages %}
+                <div class="alert alert-{{ category }}">
+                  {{ message }}
+                </div>
+              {% endfor %}
+            {% endif %}
+          {% endwith %}
+        <form method="POST" class="row" action="" style="justify-content: center;">
+            {{ form.hidden_tag() }}
+            <div class="form-data col-md-10">
+                {{form.email.label}}
+                {{form.email}}
+                {% if form.email.errors %}
+                {% for error in form.email.errors %}
+                <span class="error-message" style="color: red;">{{ error }}</span>
+                {% endfor %}
+              {% endif %}
+            </div>
+            
+            <div class="form-data col-md-10">
+                {{form.password.label}}
+                {{form.password}}
+                {% if form.password.errors %}
+                {% for error in form.password.errors %}
+                <span class="error-message" style="color: red;">{{ error }}</span>
+                {% endfor %}
+              {% endif %}
+            </div>
+            <div class="email-pref col-md-10" style="display: inline-flex; align-items: baseline;">
+                    {{ form.remember(class="form-check-input") }}
+                    {{ form.remember.label }}
+            </div>
+            <div class="form-data col-md-10">
+                {{form.submit}}
+            </div>
+            <div class="border-top pt-3">
+        
+        <small class="text-muted">
+          SIGN UP AS NEW MEMBER? <a class="ml-2" href="{{ url_for('register') }}">Sign Up</a>
+        </small>
+    </div>
+        </form>
+        
+    </div>
+    
+{% endblock content %}

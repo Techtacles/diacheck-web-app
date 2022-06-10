@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+<head>  
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta property='og:title' content='Title of the article'/>
+    <link rel="icon" href="{{ url_for('static', filename='img/logo.png') }}" />
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap.min.css') }}" >
+    <link rel="preload" href="{{ url_for('static', filename='fonts/OpenSans-Regular.ttf') }}" as='font' crossorigin='anonymous'>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='fonts/icomoon/style.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='dashboard.css') }}">
+    <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+	
+	<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <title>DIACHECK Healthcare</title>
+</head>
+<body>
+    <div class="row" style="margin: 0;"> 
+        
+<style>
+  .calendar-section{
+  display: none;
+}.bg-info {
+  background-color: #3abff9 !important;
+}
+</style>
+<div class="nav-section">
+  <a class="navbar-brand mr-4" href="/"  style="display: flex;justify-content: flex-start;">
+    <div class="logo" style="justify-content: center;
+    margin-bottom: 20px;
+    margin-top: 20px;"><a href="/">
+      <img src="{{ url_for('static', filename='img/logo.png') }}" alt="Logo" />
+      <h3 style="display:inline;">DIACHECK</h3></a>
+    </div>
+  </a>
+  <br><br>
+  <ul>
+      <li ><a href="/dashboard"><i class="icon-dashboard"></i>Dashboard</a></li>
+      <li class="active"><a href="/results"><i class="icon-book"></i>Records</a></li>
+      <li><a href="/blogs"><i class="icon-bell"></i>Blogs</a></li>
+      <li><a href="/logout"><i class="icon-power-off"></i>Logout</a></li>
+  </ul>
+</div>
+<section class="main-section" style="width:calc(100% - 290px)">
+  <div class="card" style="margin-top: 10px;">
+          <div class="card-body" style="display: flex;justify-content: space-between;align-items:center"><b style="color:#011353;"> <i class="icon-dashboard"></i>Records</b>
+            <i class="icon-menu"></i>
+            <i class="icon-close"></i>
+          </div>
+          
+        </div>
+  <br>
+  <div class="row">
+  </div>
+    <br>
+      <table class="table table-hover" style="background: white;">
+          <tr class="bg-primary text-white">
+            <th>NO</th>
+            <th>Result</th>
+            <th>Timestamp</th>
+            <th>Username</th>
+        </tr> 
+        {% for i in result %}
+        <tr>
+            <td>{{loop.index}}</td>
+            <td> {{i.result}} </td>
+            <td> {{i.timestamp}} </td>
+            <td> {{i.username}} </td>
+        </tr>
+
+        {% endfor %}
+        </table>
+</section>
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="{{ url_for('static', filename='js/jquery.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/popper.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/bootstrap.min.js') }}" ></script>
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+    <script type="text/javascript">
+      $(document).ready(function(){
+
+      });
+      $('.hover').popover({ 
+                html:true,  
+                placement:'auto'  
+    });
+    $('[data-toggle="tooltip"]').tooltip();
+    $('.icon-menu').on('click', function(){
+        $('.icon-close').show();
+        $('.icon-menu').hide();
+        $(".nav-section").css("left", "0");
+    });
+    $('.icon-close').on('click', function(){
+        $('.icon-close').hide();
+        $('.icon-menu').show();
+        $(".nav-section").css("left", "-300px");
+    });
+
+    </script>
+    
+</body>
+</html>
+
+    

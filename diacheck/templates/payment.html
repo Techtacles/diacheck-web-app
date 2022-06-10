@@ -1,0 +1,101 @@
+{% extends "layout.html" %}
+{% block content %}
+  <style>
+    .part-two{
+      display: none;
+    }
+  </style>
+    <div class="row part-one" style="background-color: white;border-radius: 30px;padding: 30px 20px;">
+      <div class="col-md-5">
+        <ul>
+          <b style="font-weight: bold;
+          color: #898d91;
+          font-family: system-ui;"><label>Personal Details</label></b>
+          <hr>
+          <li>Name: {{form.first_name}} {{form.last_name}} </li>
+          <li>Email: {{form.email}} </li>
+          <li>Address: {{form.address}} </li>
+        </ul>
+      </div>
+      <div class="col-md-1">
+      </div>
+      <div class="col-md-5">
+        <b style="font-weight: bold;
+          color: #898d91;
+          font-family: system-ui;"><label>Bill Information</label></b>
+          <hr>
+          
+          <li><span>Title: Registration Fee</span> </li>
+          <li>Price: 500 </li>
+          <li>Description: Membership Registration Fee </li>
+          <input type="hidden" id="price" value="500" />
+          
+      </div>
+      <div class="col-md-11">
+        <form id="paymentForm" >
+        <input style="background-color: #1e6eae;
+        color: white;
+        padding: 15px 50px;
+        font-weight: 500;
+        border-radius: 25px;
+        margin-top: 30px;" type="submit" class="blue-face button" onclick="payWithPaystack()" value="Continue to Payment" />
+        </form>
+      </div>
+    </div>
+    <div class="part-two row"  style="background-color: white;border-radius: 30px;padding: 30px 20px;">
+      <div class="col-md-11">
+        <form method="POST" action="/payment" class="submit">
+          {% if form %}
+          {% for i,v in form.items() %}
+            <input type="hidden" name='{{i}}' class='{{i}}' value ='{{v}}' />
+          {% endfor %}
+          {% endif %}
+          <input type="hidden" name="membership_status" class="membership_status"/>
+        <input style="background-color: #1e6eae;color: white;padding: 15px 50px;
+        font-weight: 500;border-radius: 25px;margin-top: 30px;" type="submit" class="blue-face button" value="Complete Registration" />
+        </form>
+      </div>
+    </div>
+    <div class="border-top pt-3">
+        <small class="text-muted">
+            Already Have An Account? <a class="ml-2" href="{{ url_for('login') }}">Sign In</a>
+        </small>
+    </div>
+    <script type="text/javascript" src="{{ url_for('static', filename='js/jquery-3.3.1.min.js') }}"></script>
+    <script>
+      
+    </script>
+    <script src="https://js.paystack.co/v1/inline.js"></script>
+    
+    <script>
+        const paymentForm = document.getElementById('paymentForm');
+paymentForm.addEventListener("submit", payWithPaystack, false);
+function payWithPaystack(e) {
+  e.preventDefault();
+  let handler = PaystackPop.setup({
+    //key:'pk_test_4bace05180b6a1c87584c4d19fe650f992e4f0a1',
+    key: 'pk_live_16860dd8d429b5f707b8fa6d12f94472ae060516', 
+    email: $('.email').val(),
+    amount: parseInt(200)*100,
+    currency: 'NGN',
+    subaccount:'ACCT_72fjohd0yw20hu5',
+    bearer:'subaccount',
+    channels:['card', 'bank', 'ussd', 'qr', 'mobile_money', 'bank_transfer'],
+    ref: ''+Math.floor((Math.random() * 1000000000) + 1), // generates a pseudo-unique reference. Please replace with a reference you generated. Or remove the line entirely so our API will generate one for you
+    // label: "Optional string that replaces customer email"
+    callback: function(response){
+      let message = 'Payment complete! Reference: ' + response.reference;
+      $('.membership_status').val('paid');
+      $('.part-one').hide();
+      $('.part-two').show();
+      alert(message);
+     
+    }
+  });
+  handler.openIframe();
+}
+
+    </script>
+{% endblock content %}
+
+

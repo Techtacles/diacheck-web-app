@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html>
+<head>  
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta property='og:title' content='Title of the article'/>
+    <link rel="icon" href="{{ url_for('static', filename='img/logo.png') }}" />
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap.min.css') }}" >
+    <link rel="preload" href="{{ url_for('static', filename='fonts/OpenSans-Regular.ttf') }}" as='font' crossorigin='anonymous'>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='fonts/icomoon/style.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='dashboard.css') }}">
+    <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+	
+	<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <title>DIACHECK Healthcare</title>
+</head>
+<body>
+    <div class="row" style="margin: 0;"> 
+        
+<style>
+  .calendar-section{
+  display: none;
+}.bg-info {
+  background-color: #3abff9 !important;
+}
+</style>
+<div class="nav-section">
+  <a class="navbar-brand mr-4" href="/"  style="display: flex;justify-content: flex-start;">
+    <div class="logo" style="justify-content: center;
+    margin-bottom: 20px;
+    margin-top: 20px;"><a href="/">
+      <img src="{{ url_for('static', filename='img/logo.png') }}" alt="Logo" />
+      <h3 style="display:inline;">DIACHECK</h3></a>
+    </div>
+  </a>
+  <br><br>
+  <ul>
+      <li><a href="/dashboard"><i class="icon-dashboard"></i>Dashboard</a></li>
+      <li><a href="/results"><i class="icon-book"></i>Records</a></li>
+      <li class="active"><a href="/blogs"><i class="icon-bell"></i>Blogs</a></li>
+      <li><a href="/logout"><i class="icon-power-off"></i>Logout</a></li>
+  </ul>
+</div>
+<section class="main-section" style="width:calc(100% - 290px)">
+  {% with messages = get_flashed_messages(with_categories=true) %}
+          {% if messages %}
+            {% for category, message in messages %}
+              <div class="alert alert-{{ category }}">
+                {{ message }}
+              </div>
+            {% endfor %}
+          {% endif %}
+        {% endwith %}
+        
+        <div class="card" style="margin-top: 10px;">
+          <div class="card-body" style="display: flex;justify-content: space-between;align-items:center"><b style="color:#011353;"> <i class="icon-dashboard" ></i> Blog - Lila Moss Talks Diabetes With British Vogue</b> 
+            <i class="icon-menu"></i>
+            <i class="icon-close"></i>
+          </div>
+          
+        </div>
+  <br>
+  <header>
+    <!-- Intro settings -->
+    <style>
+    .btn {
+        display: inline-block;
+        padding: 0.4rem 2.9rem;
+        color: #f8f9fa !important;
+        background-color: #3abff9;
+      }.btn:hover{
+        color: #3abff9 !important;
+      }
+    </style>
+
+    <!-- Jumbotron -->
+    <div id="intro" class="p-5 text-center bg-light">
+      <h1 class="mb-3 h2">Diabetes - Blog</h1>
+      <p class="mb-3">Diabetes is an autoimmune disorder typically diagnosed in children, teens and young adults, but it can develop at any age. Learn about the signs and symptoms of this condition and get expert guidance on blood sugar monitoring, medication, meal planning and more.</p>
+      <a class="btn btn-primary m-2" href="#" role="button" rel="nofollow"
+        target="_blank">Get Started</a>
+    </div>
+    <!-- Jumbotron -->
+  </header>
+  <!--Main Navigation-->
+  
+  <div class="container foreground" style="background-color: white;margin-top:20px; border-radius:10px;">
+    <div class="row">
+      <div class="col-lg-12">
+        <div class="bs-component" style="margin-top:20px;background-color: #f8f9fa;">
+          <article>
+            <p>In people with type 1 diabetes for 50 years or longer, greater physical activity is linked to a lower risk of developing peripheral neuropathy — nerve damage affecting the limbs, usually the legs or feet — according to a new study published in the Journal of Diabetes and its Complications.</p>
+
+            <p>Peripheral neuropathy often develops in people with diabetes as a result of long-term exposure to elevated blood glucose levels, which can lead to nerve damage. It can cause uncomfortable to painful symptoms, which may include numbness, tingling, or burning sensations. Treatment guidelines for peripheral neuropathy mainly focus on reducing pain, rather than addressing the underlying condition — but there is some evidence that certain behaviors can address some of the root causes of neuropathy, as well as reduce the risks associated with the condition. For example, addressing low vitamin D levels has been shown to help reduce neuropathic pain, indicating that a lack of adequate vitamin D may be one culprit in reduced nerve function. Losing weight may also help improve neuropathy symptoms, possibly in part due to the beneficial effects this has on metabolic health in general. And being more active by reducing sedentary time has been shown to lower the risk of developing foot ulcers — sores that don’t heal easily — in people with peripheral neuropathy.</p>
+            
+            <p>To get cutting-edge diabetes news, strategies for blood glucose management, nutrition tips, healthy recipes, and more delivered straight to your inbox, sign up for our free newsletters!</p>
+            
+            <p>For the latest study, researchers looked at data from 75 participants in a study called the Canadian Study of Longevity in Type 1 Diabetes. The average age of participants was 66, their average diabetes duration was 54 years, and their average A1C level (a measure of long-term blood glucose control) was 7.3%. As part of the study, participants underwent a physical exam, had their medical history taken, and reported their physical activity during the previous 12 months. For this analysis, the researchers were interested in comparing weekly physical activity levels with measures of diabetic neuropathy — such as nerve conduction tests, which use electrical impulses to measure how well nerves transmit signals. Physical signs and reported symptoms were also used to assess peripheral neuropathy.</p>
+            
+            <P>The average amount of weekly physical activity among participants was 156 minutes, and 65 participants (87%) had what’s known as distal symmetric polyneuropathy (DSPN) — neuropathy on both feet or legs. The researchers found that participants with DSPN had significantly lower levels of physical activity than those without the condition — an average of 141 minutes per week, compared with 258 minutes per week for those who didn’t have DSPN. Greater physical activity was also linked to better outcomes on specific physical and neurological measures, including cooling detection threshold (ability to feel a cold surface on the affected areas), peroneal and sural amplitude, and conduction velocity (measurement of nerve function). After adjusting for participants’ age and A1C level, the researchers found that for every additional 30 minutes of weekly physical activity, there was a predictable improvement in two measures of nerve function — a 0.09mv higher peroneal amplitude and a 0.048 ms lower peroneal F-wave latency.</P>
+            <div class="horizontal-center">
+              <div class="author">
+                <a href="#">
+                  <img src="https://s3.amazonaws.com/uifaces/faces/twitter/cacique/73.jpg" class="author-image"><span class="author-name">Brian Barrett</span>
+                </a>
+              </div>
+              <div class="date-published">
+                February 12, 2015
+              </div>
+            </div>
+          </article>
+        </div>
+  
+        
+  
+      </div>
+    </div>
+  </div>
+  
+
+</section>
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="{{ url_for('static', filename='js/jquery.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/popper.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/bootstrap.min.js') }}" ></script>
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+    <script type="text/javascript">
+      $(document).ready(function(){
+
+      });
+      $('.hover').popover({ 
+                html:true,  
+                placement:'auto'  
+    });
+    $('[data-toggle="tooltip"]').tooltip();
+    $('.icon-menu').on('click', function(){
+        $('.icon-close').show();
+        $('.icon-menu').hide();
+        $(".nav-section").css("left", "0");
+    });
+    $('.icon-close').on('click', function(){
+        $('.icon-close').hide();
+        $('.icon-menu').show();
+        $(".nav-section").css("left", "-300px");
+    });
+
+    </script>
+    
+</body>
+</html>
+
+    

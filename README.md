@@ -1,2 +1,2 @@
-# diacheck-web-app
-A project about diabetes prediction in a web app using Flask.
+# DiaCheck
+Diacheck Healthcare Check your diabetes status using our highly accurate prediction system.The earlier it's dicovered the better, in order to prevent severe effects.

@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="icon" href="{{ url_for('static', filename='logo-icon.png') }}" />
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap.min.css') }}" >
+    <link rel="preload" href="{{ url_for('static', filename='fonts/OpenSans-Regular.ttf') }}" as='font' crossorigin='anonymous'>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='fonts/icomoon/style.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='main.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}" />
+    <title>DIACHECK Healthcare</title>
+</head>
+  <body style="margin-top: 0;">
+    <main>
+      <div class="big-wrapper light">
+        <img src="{{ url_for('static', filename='img/shape.png') }}" alt="" class="shape" />
+
+        <header>
+          <div class="container">
+            <div class="logo"><a href="/">
+              <img src="{{ url_for('static', filename='img/logo.png') }}" alt="Logo" />
+              <h3 style="display:inline;">DIACHECK</h3></a>
+            </div>
+
+            <div class="links">
+              <ul>
+                <li><a href="/about">About Us</a></li>
+                <li><a href="/login" class="btn">Sign up</a></li>
+                <div class="bottom-area">
+                  <div class="container">
+                    <button class="toggle-btn">
+                      <i class="far fa-moon"></i>
+                      <i class="far fa-sun"></i>
+                    </button>
+                  </div>
+                </div>
+                <script src="https://kit.fontawesome.com/a81368914c.js"></script>
+                <script src="{{ url_for('static', filename='js/app.js') }}"></script>
+              </ul>
+            </div>
+
+            <div class="overlay"></div>
+
+            <div class="hamburger-menu">
+              <div class="bar"></div>
+            </div>
+          </div>
+        </header>
+    <main role="main" class="container">
+      <div class="row">
+        <div class="col-md-6" style="margin: auto;">
+          {% block content %}{% endblock %}
+        </div>
+        <b style="text-align: center;margin: auto;">Created by Ikegwuonu Samuel 18CG024747</b>
+      </div>
+    </main>
+
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="{{ url_for('static', filename='js/jquery.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/bootstrap.min.js') }}" ></script>
+    <script type="text/javascript">
+      $(document).ready(function(){
+        $('.toast').toast('show');
+      });
+      $('select').on('click', function(){
+            if($(this).val() == 'Student'){
+                $('.student').slideDown();
+                $('.student').css('display','flex')
+            }
+            else{
+              $('.student').slideUp();
+            }
+        });
+    </script>
+</body>
+</html>
