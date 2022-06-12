@@ -12,7 +12,6 @@ class User(db.Model, UserMixin):
     id = db.Column(db.Integer, primary_key=True)
     first_name = db.Column(db.String(150), unique=False, nullable=False)
     last_name = db.Column(db.String(150), unique=False, nullable=False)
-    username = db.Column(db.String(150), unique=False, nullable=False)
     email = db.Column(db.String(150), unique=True, nullable=False)
     password = db.Column(db.String(250),unique=False, nullable=False)
 
@@ -23,7 +22,6 @@ class User(db.Model, UserMixin):
 class Prediction(db.Model):
     __tablename__ = 'prediction'
     id = db.Column(db.Integer, primary_key=True)
-    username = db.Column(db.String(150), unique=False, nullable=False)
     test_number = db.Column(db.Integer, unique=False, nullable=False)
     result = db.Column(db.String(150), unique=False, nullable=False)
     timestamp = db.Column(db.DateTime, server_default=db.func.current_timestamp())

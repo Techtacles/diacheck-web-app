@@ -40,8 +40,8 @@
   </a>
   <br><br>
   <ul style="position: relative;">
-      <li ><a href="/dashboard"><i class="icon-dashboard"></i>Dashboard</a></li>
-      <li class="active"><a href="/results"><i class="icon-book"></i>Records</a></li>
+      <li class="active"><a href="/dashboard"><i class="icon-dashboard"></i>Dashboard</a></li>
+      <li ><a href="/results"><i class="icon-book"></i>Records</a></li>
       <li><a href="/blogs"><i class="icon-bell"></i>Blogs</a></li>
       <li style="position: absolute;
       bottom: -350px;"><a href="/logout"><i class="icon-power-off"></i>Logout</a></li>
@@ -59,22 +59,35 @@
   <div class="row">
   </div>
     <br>
-      <table class="table table-hover" style="background: white;">
-          <tr class="bg-primary text-white">
-            <th>Test No</th>
-            <th>Result</th>
-            <th>Timestamp</th>
-        </tr> 
-        {% for i in result %}
-        <tr>
-            <td>{{loop.index}}</td>
-            <td> {{i.result}} </td>
-            <td> {{i.timestamp}} </td>
-        </tr>
-        {% endfor %}
-        </table>
+    <div style="box-shadow: rgb(0 0 0 / 24%) 0px 3px 8px;
+    width: 350px;
+    background-color: white;
+    margin: auto;
+    height: 300px;
+    border-radius: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;">
+    <div>{% if pred_value == 0 %}
+    <h3 style="text-align: center;color:#4ebf4e;">Congratulations !!!</h3>
+    <br>
+    <p >Prediction : {{prediction_text}}</p>
+    <i class="ddd"><a href="/blogs">Click here  </a>for more tips to stay healthy</i>
+    {% else %}
+    <h3 style="text-align: center;color:#db1414;">Ops !!!</h3>
+    <br>
+    <p >Prediction : {{prediction_text}}</p>
+    <i class="ddd"><a href="/blogs">Click here  </a>for more tips to stay healthy</i>
+      {%endif %}
+    </div>
+      </div>
 </section>
-
+<style>
+    p,.ddd{
+        display: block;
+        text-align: center;
+    }
+</style>
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="{{ url_for('static', filename='js/jquery.min.js') }}"></script>

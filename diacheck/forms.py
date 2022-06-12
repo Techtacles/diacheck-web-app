@@ -13,8 +13,6 @@ class RegistrationForm(FlaskForm):
     last_name = StringField('Lastname', render_kw={'placeholder':'Last Name'}, validators=[DataRequired(), Length(1,100), 
                                                   Regexp(r"^[a-zA-Z_.-]+$", 0, 'Lastname must have only letters, dots , underscores and hyphen')])
     email = StringField('Email', render_kw={'placeholder':'Email'}, validators=[DataRequired(), Email()])
-    username = StringField('Username', render_kw={'placeholder':'UserName'}, validators=[DataRequired(), Length(1,100), 
-                                                  Regexp(r"^[a-zA-Z_.-]+$", 0, 'Username must have only letters, dots , underscores and hyphen')])
     password = PasswordField('Password', validators=[DataRequired()])
     confirm_password = PasswordField('Confirm Password',
                                      validators=[DataRequired(), EqualTo('password')])

@@ -42,15 +42,6 @@
             {% endfor %}
           {% endif %}
         </div>
-        <div class="form-data col-md-10">
-          {{form.username.label}}
-          {{form.username}}
-          {% if form.username.errors %}
-          {% for error in form.username.errors %}
-          <span class="error-message" style="color: red;">{{ error }}</span>
-          {% endfor %}
-        {% endif %}
-      </div>
             <div class="form-data col-md-10">
                 {{form.email.label}}
                 {{form.email}}

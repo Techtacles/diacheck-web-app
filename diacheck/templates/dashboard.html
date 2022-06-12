@@ -32,24 +32,25 @@
     display: inline-block;
     padding: 0.4rem 2.9rem;
     color: #f8f9fa !important;
-    background-color: #3abff9;
+    background-color: #3abff9 !important;
 }
 </style>
 <div class="nav-section">
   <a class="navbar-brand mr-4" href="/"  style="display: flex;justify-content: flex-start;">
     <div class="logo" style="justify-content: center;
     margin-bottom: 20px;
-    margin-top: 20px;"><a href="/">
+    margin-top: 20px;"><a href="/dashboard">
       <img src="{{ url_for('static', filename='img/logo.png') }}" alt="Logo" />
       <h3 style="display:inline;">DIACHECK</h3></a>
     </div>
   </a>
   <br><br>
-  <ul>
+  <ul style="position: relative;">
       <li class="active"><a href="/dashboard"><i class="icon-dashboard"></i>Dashboard</a></li>
       <li><a href="/results"><i class="icon-book"></i>Records</a></li>
       <li><a href="/blogs"><i class="icon-bell"></i>Blogs</a></li>
-      <li><a href="/logout"><i class="icon-power-off"></i>Logout</a></li>
+      <li style="position: absolute;
+      bottom: -350px;"><a href="/logout"><i class="icon-power-off"></i>Logout</a></li>
   </ul>
 </div>
 <section class="main-section" style="width:calc(100% - 290px)">
@@ -72,7 +73,7 @@
         </div>
   <br>
   <div class="row">
-      <div class="col-sm-6">
+      <div class="col-sm-12">
           <div class="card" style="margin-top: 10px;">
               <div class="card-body"  style="justify-content: space-between;display: flex;align-items: center;">
                   <div>
@@ -86,6 +87,7 @@
               </div>
             </div>
       </div>
+      <!--
       <div class="col-sm-6">
           <div class="card" style="margin-top: 10px;">
           <div class="card-body" style="padding: 1.15rem;">
@@ -96,7 +98,9 @@
                   </div>
           </div>
       </div>
+      
       </div>
+      -->
   </div>
   <br>
   
@@ -112,7 +116,15 @@
     </div>
   
     <b><label class="label text-center">Predict</label></b>
-    <div style="box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;width:350px;background-color: white;margin: auto;height:300px;border-radius: 20p;display:flex;justify-content:center;align-item:center">
+    <div style="box-shadow: rgb(0 0 0 / 24%) 0px 3px 8px;
+    width: 350px;
+    background-color: white;
+    margin: auto;
+    height: 300px;
+    border-radius: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;">
     <div>{% if prediction_text %}
     <p>Prediction : {{prediction_text}}</p>
     <a class="btn btn-block" href="/blogs">Click here  </a>
@@ -142,49 +154,91 @@
       <div class="modal-body">
         <form  action="{{ url_for("predict")}}" method="POST">
         <div>
-                    <label for="" class="form-label">High Bp:</label>
-                    <input type="text" name="highbp" class="form-control">
+                    <label for="" class="form-label">Do You Have any history of high blood pressure ?</label>
+                    <select name="highbp" class="form-control">
+                      <option value="0">No</option>
+                      <option value="1">Yes</option>
+                    </select>
                 </div>
-       <div>
-                    <label for="" class="form-label">High Cholesterol:</label>
-                    <input type="text" name="highcholesterol" class="form-control">
+       <div>        <label for="" class="form-label">Do You Have any history of High Cholesterol ?</label>
+                  <select name="highcholesterol" class="form-control">
+                    <option value="0">No</option>
+                    <option value="1">Yes</option>
+                  </select>
                 </div>
+                <div>       <label for="" class="form-label">Do You Have any history of Heavy disease or attack ?</label>
+                  <select name="hdoa" class="form-control">
+                    <option value="0">No</option>
+                    <option value="1">Yes</option>
+                  </select>
+              </div> 
         <div>
                     <label for="" class="form-label">Age:</label>
-                    <input type="text" name="age" class="form-control">
+                    <select name="age" class="form-control">
+                      <option value="1">18 - 24</option>
+                      <option value="2">25 - 29</option>
+                      <option value="3">30 - 34</option>
+                      <option value="4">35 - 39</option>
+                      <option value="5">40 - 44</option>
+                      <option value="6">45 - 49</option>
+                      <option value="7">50 - 54</option>
+                      <option value="8">55 - 59</option>
+                      <option value="9">60 - 64</option>
+                      <option value="10">65 - 69</option>
+                      <option value="11">70 - 74</option>
+                      <option value="12">75 - 79</option>
+                      <option value="13">80 - Older</option>
+                      
+                    </select>
                 </div>  
         <div>
-                    <label for="" class="form-label">Smoker:</label>
-                    <input type="text" name="smoker" class="form-control">
+                    <label for="" class="form-label">Do you smoke regularly ?:</label>
+                    <select name="smoker" class="form-control">
+                      <option value="0">No</option>
+                      <option value="1">Yes</option>
+                    </select>
                 </div>    
         <div>
-                    <label for="" class="form-label">Sex:</label>
-                    <input type="text" name="sex" class="form-control">
+                    <label for="" class="form-label">Gender:</label>
+                    <select name="sex" class="form-control">
+                      <option value="0">Female</option>
+                      <option value="1">Male</option>
+                    </select>
                 </div>
        <div>
-                    <label for="" class="form-label">BMI:</label>
+                    <label for="" class="form-label">Input your BMI (Body Mass Index) Kgm<sup>-2</sup>:</label>
                     <input type="text" name="bmi" class="form-control">
                 </div>
         <div>
-                    <label for="" class="form-label">Fruits:</label>
-                    <input type="text" name="fruits" class="form-control">
+                    <label for="" class="form-label">Do you Consume Fruits Regularly:</label>
+                    <select name="fruits" class="form-control">
+                      <option value="0">No</option>
+                      <option value="1">Yes</option>
+                    </select>
                 </div>
        <div>
-                    <label for="" class="form-label">Heavy Alcohol Consumption:</label>
-                    <input type="text" name="alcohol" class="form-control">
+                    <label for="" class="form-label">Do you consume alcohol regularly ?:</label>
+                    <select name="alcohol" class="form-control">
+                      <option value="0">No</option>
+                      <option value="1">Yes</option>
+                    </select>
                 </div>
                 
     <div>
-                 <label for="" class="form-label">Physical activity:</label>
-                 <input type="text" name="physical" class="form-control">
+                 <label for="" class="form-label">Do you exercise regularly ?:</label>
+                 <select name="physical" class="form-control">
+                  <option value="0">No</option>
+                  <option value="1">Yes</option>
+                </select>
              </div>
-    <div>
-                <label for="" class="form-label">Heavy disease or attack:</label>
-                <input type="text" name="hdoa" class="form-control">
-            </div>  
-              <input type="submit" class="btn btn-bloc">
+     
+              <input type="submit" class="btn btn-bloc" value="Predict">
               
-              
+ <style>
+  input{
+    margin-bottom: 10px;
+  }
+ </style>             
            
         
         
