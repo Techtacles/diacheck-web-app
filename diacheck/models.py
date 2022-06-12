@@ -27,5 +27,5 @@ class Prediction(db.Model):
     timestamp = db.Column(db.DateTime, server_default=db.func.current_timestamp())
 
     def __repr__(self):
-        return f"User('{self.username}', '{self.test_number}','{self.result}')"
+        return f"User( '{self.test_number}','{self.result}')"
 
